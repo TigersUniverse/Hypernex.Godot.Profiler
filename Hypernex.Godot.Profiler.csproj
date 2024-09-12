@@ -1,0 +1,21 @@
+<Project Sdk="Godot.NET.Sdk/4.3.0">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.3.2" />
+    <PackageReference Include="Tracy-CSharp" Version="0.10.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hypernex.Godot\Hypernex.Godot\Hypernex.Godot.csproj" />
+    <Reference Include="Hypernex.CCK">
+      <HintPath>..\Hypernex.Godot\Hypernex.Godot\addons\Hypernex.CCK\Hypernex.CCK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="assets/**" />
+  </ItemGroup>
+</Project>
