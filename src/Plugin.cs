@@ -21,7 +21,6 @@ namespace Hypernex.GodotVersion.ProfilerPlugin
         public override void OnPluginLoaded()
         {
             NativeLibrary.SetDllImportResolver(typeof(Tracy.PInvoke).Assembly, TracyResolver);
-            Profiler.ProfileFrame(nameof(OnPluginLoaded));
         }
 
         public override void Start()
@@ -31,14 +30,18 @@ namespace Hypernex.GodotVersion.ProfilerPlugin
 
         public override void LateUpdate()
         {
-            Profiler.ProfileFrame(nameof(LateUpdate));
+            Profiler.EmitFrameMark();
         }
 
         private IntPtr TracyResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
             if (libraryName.Equals("TracyClient"))
             {
-                return NativeLibrary.Load(Path.GetFullPath(Path.Combine(assembly.Location, "..", "runtimes", libraryName)));
+                if (OS.GetName().Equals("Windows"))
+                {
+                    return NativeLibrary.Load(Path.GetFullPath(Path.Combine(assembly.Location, "..", "runtimes", libraryName)));
+                }
+                return NativeLibrary.Load(Path.GetFullPath(Path.Combine(assembly.Location, "..", "runtimes", libraryName + ".so")));
             }
             return IntPtr.Zero;
         }

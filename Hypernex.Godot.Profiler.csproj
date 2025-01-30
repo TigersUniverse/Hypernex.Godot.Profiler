@@ -6,8 +6,8 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.3.2" />
-    <PackageReference Include="Tracy-CSharp" Version="0.10.0.2" />
+    <PackageReference Include="HarmonyX" Version="2.13.0" />
+    <PackageReference Include="Tracy-CSharp" Version="0.11.1-hotfix" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hypernex.Godot\Hypernex.Godot\Hypernex.Godot.csproj" />
